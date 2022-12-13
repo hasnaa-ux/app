@@ -9,15 +9,15 @@
     <NuxtLink to="/">
       Home page
     </NuxtLink>
-  </v-app>
-</template>
-
-<script>
-export default {
-  name: 'EmptyLayout',
-  layout: 'empty',
-  props: {
-    error: {
+  </v-app>    
+</template>    
+    
+<script>    
+export default {   
+  name: 'EmptyLayout',   
+  layout: 'empty',   
+  props: {   
+    error: {   
       type: Object,
       default: null
     }
