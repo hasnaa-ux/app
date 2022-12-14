@@ -1,10 +1,9 @@
 <template>
   <div>
     <v-app-bar
-    color="blue accent-2"
       height="80"
       class="el"
-      
+      color="white"
       app
       :style="{ padding: $vuetify.breakpoint.mdAndUp ? '0px 100px' : '' }"
     >
@@ -17,32 +16,46 @@
       <v-spacer />
 
       <!-- if user is auth -->
-      <v-toolbar-title class="mr-5" >
-        Email
-      </v-toolbar-title>
 
-      <v-btn  @click="ToggleTheme" class="mr-5" color="cyan accent-3">
+      <div v-if="currentUser.name">
+        <v-btn class="mr-5" text>
+          <v-spacer>{{ currentUser.name }}</v-spacer>
+        </v-btn>
+        <v-btn @click="ToggleTheme" class="mr-5" color="teal lighten-1">
         Logout
       </v-btn>
-
-      <!-- if user is not auth -->
-      <v-btn nuxt to="/products" class="mr-5" color="teal lighten-1">
-        Login
-      </v-btn>
-
-      <v-btn  @click="ToggleTheme" class="mr-5" color="teal lighten-1">
+      </div>
+      <div v-else>
+        <v-btn nuxt to="/products" class="mr-5" color="teal lighten-1">
+          Login
+        </v-btn>
+        
+      <v-btn @click="ToggleTheme" class="mr-5" color="teal lighten-1">
         Register
       </v-btn>
+      </div>
+  
+
+      <!-- if user is not auth -->
+
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
+  data() {
+    return {};
+  },
+
   methods: {
     ToggleTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
     },
+  },
+  computed: {
+    ...mapState(["currentUser"]),
   },
 };
 </script>
