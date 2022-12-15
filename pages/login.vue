@@ -1,8 +1,9 @@
 <template>
   <div>
+    <Nav/>
     <v-container>
       <h1>login</h1>
-      <UserAuthInfo />
+      <UserAuthForm />
     </v-container>
   </div>
 </template>
